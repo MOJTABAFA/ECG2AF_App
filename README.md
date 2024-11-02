@@ -1,5 +1,6 @@
 
 # 🌟 ECG2AF Web Application
+*Revolutionizing ECG Data Analysis with Predictive Insights*
 
 **Predicting Atrial Fibrillation Risk from ECG Data**  
 This project showcases a simple web application that allows users to upload an ECG file in `.h5` format. Using the `ECG2AF` machine learning model, the app predicts the risk of developing atrial fibrillation (AF) and displays the results to the user.
