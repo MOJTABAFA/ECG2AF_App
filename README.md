@@ -22,12 +22,12 @@ This project showcases a simple web application that allows users to upload an E
 ---
 
 ## 🎯 Project Overview
+The `ECG2AF` application is an innovative solution designed to facilitate the prediction of atrial fibrillation risk using advanced machine learning. It empowers users to easily upload ECG data and receive comprehensive predictions, aiding in proactive healthcare management. It serves as a practical example of deploying a clinical AI model for atrial fibrillation prediction. Users can upload ECG files, and the app will:
 
-The `ECG2AF` application serves as a practical example of deploying a clinical AI model for atrial fibrillation prediction. Users can upload ECG files, and the app will:
 1. Process the ECG file using the pre-trained `ECG2AF` model.
 2. Display four different prediction outputs related to AF risk.
 
-This assignment demonstrates how to build a functional web application, handle machine learning model integration, and manage user-uploaded files, all while maintaining scalability for real-world usage.
+This application aimed to demonstrate how to build a functional web application, handle machine learning model integration, and manage user-uploaded files, all while maintaining scalability for real-world usage.
 
 ---
 
@@ -112,9 +112,14 @@ After uploading an ECG file, you'll receive results similar to:
 
 ## 📈 Scalability Plan
 
+## 📈 Scalability Plan
+To meet the demands of large-scale data processing and support more users, this application can be scaled using a multi-pronged strategy. Leveraging technologies like Kubernetes for orchestrating containerized services ensures reliable scaling. Distributed data frameworks, such as Apache Spark, can be implemented for batch processing of extensive datasets, boosting processing efficiency. Additionally, using cloud solutions like AWS Lambda or Azure Functions enables on-demand serverless architecture, optimizing resource use and reducing costs.
+
 To accommodate more users and analyze a larger volume of ECG data, here are suggested scalability strategies:
 
-- **Batch Processing**: For high data volumes (e.g., 10,000 ECGs), implement batch processing using a distributed computing framework like Apache Spark or Dask. This will allow simultaneous analysis of multiple ECGs, increasing efficiency.
+- **Batch Processing**: For high data volumes (e.g., 10,000 ECGs), implement batch processing using a distributed computing framework like Apache Spark or Dask 
+(I really love Dask because it works so well with Python and can be easily set up on cloud platforms like Amazon AWS, Google GCP, and Microsoft Azure!). This will allow simultaneous analysis of multiple ECGs, increasing efficiency.
+
 - **Cloud Hosting**: Deploy the app on a cloud platform, such as AWS or Google Cloud. Utilize cloud storage (like AWS S3) for file uploads to handle larger storage needs.
 - **Load Balancing**: Use a load balancer to distribute incoming requests across multiple server instances, ensuring that the app can handle a high volume of concurrent users without compromising performance.
 - **Serverless Architecture**: For individual file processing, consider using serverless functions (e.g., AWS Lambda) to scale on-demand based on file upload frequency.
@@ -149,4 +154,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for more 
 
 ---
 
-Feel free to reach out with any questions, suggestions, or contributions to make this project even better! Enjoy using the ECG2AF App for predicting AF risk with ease and scalability. 😊
+## 📜 License
+The project is distributed under the MIT License, chosen for its permissiveness and encouragement of collaborative development. This aligns with the vision of fostering innovation and open-source contributions while protecting the authors' work.
+
+© Mojtaba Fazli. For any questions or assistance, feel free to reach out via email at mfazli@stanford.edu or mfazli@meei.harvard.edu.
+ 😊
