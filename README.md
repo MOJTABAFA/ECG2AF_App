@@ -111,8 +111,6 @@ After uploading an ECG file, you'll receive results similar to:
 ---
 
 ## 📈 Scalability Plan
-
-## 📈 Scalability Plan
 To meet the demands of large-scale data processing and support more users, this application can be scaled using a multi-pronged strategy. Leveraging technologies like Kubernetes for orchestrating containerized services ensures reliable scaling. Distributed data frameworks, such as Apache Spark, can be implemented for batch processing of extensive datasets, boosting processing efficiency. Additionally, using cloud solutions like AWS Lambda or Azure Functions enables on-demand serverless architecture, optimizing resource use and reducing costs.
 
 To accommodate more users and analyze a larger volume of ECG data, here are suggested scalability strategies:
