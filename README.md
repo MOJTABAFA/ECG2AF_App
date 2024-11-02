@@ -128,9 +128,7 @@ To accommodate more users and analyze a larger volume of ECG data, here are sugg
 
 This project leveraged AI tools for guidance and assistance:
 
-- **ChatGPT**: Used to streamline code structure, optimize functionality, and generate explanations and example documentation.
-
-If you use AI tools for further enhancements, please mention the tool and describe its role in your `README`.
+- **ChatGPT**: Used to clean and documentation of the code.
 
 ---
 
