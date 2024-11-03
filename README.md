@@ -95,9 +95,13 @@ Here's a brief overview of the project structure to help you navigate the files:
 │   ├── main.py         # Core FastAPI application
 │   ├── model.py        # Model loading and prediction functions
 │   └── utils.py        # Utility functions for ECG data processing
-├── requirements.txt    # Project dependencies
+├── Templates
+│   ├── upload.html     # Provides a simple interface for users to upload their ECG files.
+│   └── results.html    # Displays the prediction results in a structured format.
 ├── Dockerfile          # Docker configuration for deployment
-└── run_project.sh
+├── README.md           # Project Readme file
+├── requirements.txt    # List of required packages
+└── run_project.sh      # Bash file for automated run
 ```
 
 > **Note**: The `Source` folder contains all Python scripts for logical separation and better maintainability.
