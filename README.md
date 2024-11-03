@@ -76,6 +76,13 @@ Start the application locally using Uvicorn:
 uvicorn main:app --reload
 ```
 
+
+### 6. Automated Run with Bash Script
+Run the entire setup with:
+```bash
+./run_project.sh
+```
+
 > **Tip**: Ensure your Python environment is activated before running the commands.
 
 ---
@@ -89,7 +96,8 @@ Here's a brief overview of the project structure to help you navigate the files:
 │   ├── model.py        # Model loading and prediction functions
 │   └── utils.py        # Utility functions for ECG data processing
 ├── requirements.txt    # Project dependencies
-└── Dockerfile          # Docker configuration for deployment
+├── Dockerfile          # Docker configuration for deployment
+└── run_project.sh
 ```
 
 > **Note**: The `Source` folder contains all Python scripts for logical separation and better maintainability.
@@ -107,13 +115,19 @@ Here's a brief overview of the project structure to help you navigate the files:
 ---
 
 ## 🌐 Scalability
-To scale this application for greater user loads and larger data sets, consider the following approaches:
+Scaling the ECG2AF application for higher user loads and larger datasets can be achieved through a comprehensive, multi-faceted strategy. Implementing technologies such as Kubernetes for orchestrating containerized services provides robust and reliable scaling. For processing large volumes of data, integrating distributed data frameworks like Apache Spark or Dask enhances batch processing efficiency. (I really love Dask which is an excellent choice due to its seamless compatibility with Python and straightforward deployment on cloud platforms like AWS, GCP, and Azure!). Additionally, leveraging serverless architectures with services like AWS Lambda or Azure Functions supports on-demand scaling, optimizing resource allocation and reducing costs.
 
-- **Batch Processing**: Integrate a task queue system like **Celery** with **Redis** for processing multiple file uploads asynchronously.
+- **Batch Processing**: Implement batch processing using distributed frameworks such as Apache Spark or Dask to analyze large volumes of ECG data concurrently, thereby boosting processing efficiency. Integrating a task queue system like **Celery** with **Redis** can further enhance the asynchronous handling of multiple file uploads.
+
 - **Load Balancing**: Deploy on cloud platforms (e.g., **AWS**, **GCP**) with load balancing and auto-scaling to handle traffic spikes.
-- **Distributed Processing**: Utilize **Apache Spark** for parallel data processing, enabling efficient handling of massive data sets.
 
-> **Scalability Insight**: Combining these strategies ensures seamless scaling, optimal performance, and resilience under high data loads.
+- **Distributed Processing**: Utilize Apache Spark for parallel data processing to handle extensive datasets effectively. This ensures that large-scale data analysis remains efficient and responsive.
+
+- **Cloud Hosting**: Host the application on cloud services such as **AWS** or **GCP** to harness scalable infrastructure. Employ cloud storage solutions like **AWS S3** to manage and store uploaded files, accommodating growing storage demands.
+
+- **Serverless Architecture**: For individual file processing, serverless functions (e.g., **AWS Lambda**) offer a scalable, on-demand solution that adapts to fluctuating file upload frequencies without constant server management.
+
+> **Scalability Insight**: Combining these strategies ensures a scalable, resilient, and high-performing application capable of handling substantial data loads and user demands seamlessly.
 
 ---
 
@@ -150,6 +164,4 @@ This project is distributed under the [MIT License](LICENSE), allowing you to us
 
 💡 For any questions or suggestions, please feel free to contact me either at  mfazli@meei.harvard.edu or mfazli@stanford.edu
 
-💡 © Mojtaba Fazli 2024. 
-
-
+💡 © Mojtaba Fazli Nov, 2024. 
