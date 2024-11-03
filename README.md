@@ -1,152 +1,151 @@
-
 # 🌟 ECG2AF Web Application
-*Revolutionizing ECG Data Analysis with Predictive Insights*
 
-**Predicting Atrial Fibrillation Risk from ECG Data**  
-This project showcases a simple web application that allows users to upload an ECG file in `.h5` format. Using the `ECG2AF` machine learning model, the app predicts the risk of developing atrial fibrillation (AF) and displays the results to the user.
+Welcome to the **ECG2AF Web Application**! This project is a FastAPI-based web tool designed to make uploading and processing ECG files seamless while predicting the risk of atrial fibrillation with precision. Dive into the details below to see how you can get started quickly.
 
 ---
 
 ## 📋 Table of Contents
-
-- [Project Overview](#project-overview)
-- [Features](#features)
-- [Prerequisites](#prerequisites)
-- [Setup Instructions](#setup-instructions)
-- [Usage](#usage)
-- [Scalability Plan](#scalability-plan)
-- [Generative AI Tools](#generative-ai-tools)
-- [Contributing](#contributing)
-- [License](#license)
-
----
-
-## 🎯 Project Overview
-The `ECG2AF` application is an innovative solution designed to facilitate the prediction of atrial fibrillation risk using advanced machine learning. It empowers users to easily upload ECG data and receive comprehensive predictions, aiding in proactive healthcare management. It serves as a practical example of deploying a clinical AI model for atrial fibrillation prediction. Users can upload ECG files, and the app will:
-
-1. Process the ECG file using the pre-trained `ECG2AF` model.
-2. Display four different prediction outputs related to AF risk.
-
-This application aimed to demonstrate how to build a functional web application, handle machine learning model integration, and manage user-uploaded files, all while maintaining scalability for real-world usage.
+- [Overview](#overview)
+- [🚀 Features](#features)
+- [🔧 Setup Instructions](#setup-instructions)
+- [📂 Project Structure](#project-structure)
+- [⚙️ Usage](#usage)
+- [🌐 Scalability](#scalability)
+- [💡 Assumptions](#assumptions)
+- [🛡️ Error Handling](#error-handling)
+- [📜 License](#license)
 
 ---
 
-## 🌟 Features
+## 🖥️ Overview
+This web application leverages FastAPI to process ECG files stored in `.hd5` format and runs predictions using a pre-trained **ECG2AF** model. Designed for simplicity, it offers a smooth user experience and can be deployed locally with minimal effort.
 
-- **File Upload:** Users can upload `.h5` ECG files.
-- **Model Integration:** Uses a pre-trained `ECG2AF` model to make AF predictions.
-- **Intuitive User Interface:** Displays prediction results in a clear, user-friendly format.
-- **Error Handling:** Provides user feedback for invalid file formats or processing errors.
-- **Scalability-Ready Design:** Easily adaptable for larger data volumes and concurrent users.
+> **Why ECG2AF?**  
+> Atrial fibrillation (AF) is a major risk factor for stroke and heart failure. Predicting AF using data-driven methods can greatly assist clinicians in early diagnosis and treatment planning.
 
 ---
 
-## 🛠️ Prerequisites
+## 🚀 Features
 
-Before you begin, ensure you have the following installed:
+✨ **File Upload Interface**  
+A simple, user-friendly upload portal that allows users to submit their ECG files for analysis.
 
-- **Python 3.6+**
-- **Virtual Environment** (optional but recommended)
-- **Internet Connection** (to download dependencies)
+⚡ **Real-Time Processing**  
+Get results instantly, thanks to the efficient processing of ECG data and multi-task prediction outputs.
+
+🛡️ **Robust Error Handling**  
+Receive clear, actionable feedback for any issues encountered (e.g., incorrect file formats).
+
+> **Unique Approach**: This tool is tailored for quick integration with clinical workflows and can be adapted for other prediction models.
 
 ---
 
-## 🚀 Setup Instructions
+## 🔧 Setup Instructions
 
-### Step 1: Clone the Repository
+Follow these steps to get the application running on your local environment:
 
-Clone this repository to your local machine:
-
+### 1. Clone the Repository
+Clone the project from GitHub and navigate into the project folder:
 ```bash
-git clone <repo_url>
-cd ECG2AF_App
+git clone https://github.com/broadinstitute/ml4h.git
+cd ml4h
 ```
 
-### Step 2: Create and Activate a Virtual Environment
-
-Creating a virtual environment is recommended to manage dependencies and isolate the project environment.
-
+### 2. Pull the Docker Image
+To ensure all necessary libraries are available, pull the pre-configured Docker image:
 ```bash
-python3 -m venv ecg2af_env
-source ecg2af_env/bin/activate  # For Mac/Linux
-ecg2af_env\Scripts\activate     # For Windows
+docker pull ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu
 ```
 
-### Step 3: Install Dependencies
+### 3. Install Git LFS and Download the Model
+Git LFS (Large File Storage) is needed to pull the model file:
+```bash
+git lfs install
+git lfs pull --include model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5
+```
 
-Install the required Python packages:
-
+### 4. Install Dependencies
+Ensure Python 3.6 or higher is installed. Run the following command to install the required packages:
 ```bash
 pip install -r requirements.txt
 ```
 
-### Step 4: Run the Application
-
-Use `uvicorn`, an ASGI server, to run the FastAPI application:
-
+### 5. Run the Application
+Start the application locally using Uvicorn:
 ```bash
-uvicorn app.main:app --reload
+uvicorn main:app --reload
 ```
 
-### Step 5: Access the Web App
-
-Open your browser and navigate to `http://127.0.0.1:8000`. You should see the upload interface for the ECG file.
+> **Tip**: Ensure your Python environment is activated before running the commands.
 
 ---
 
-## 📖 Usage
+## 📂 Project Structure
+Here's a brief overview of the project structure to help you navigate the files:
+```plaintext
+📁 ECG2AF Web Application
+├── Source
+│   ├── main.py         # Core FastAPI application
+│   ├── model.py        # Model loading and prediction functions
+│   └── utils.py        # Utility functions for ECG data processing
+├── requirements.txt    # Project dependencies
+└── Dockerfile          # Docker configuration for deployment
+```
 
-1. **Navigate to the Upload Page**: Go to the application’s homepage, where you'll find a form to upload your `.h5` ECG file.
-2. **Upload ECG File**: Click on "Choose File" to select your `.h5` ECG file and then hit "Submit."
-3. **View Prediction Results**: The app will process the file and display predictions in four output categories related to AF risk.
-
-### Example:
-After uploading an ECG file, you'll receive results similar to:
-
-- **Output 1**: [Prediction Value]
-- **Output 2**: [Prediction Value]
-- **Output 3**: [Prediction Value]
-- **Output 4**: [Prediction Value]
-
----
-
-## 📈 Scalability Plan
-To meet the demands of large-scale data processing and support more users, this application can be scaled using a multi-pronged strategy. Leveraging technologies like Kubernetes for orchestrating containerized services ensures reliable scaling. Distributed data frameworks, such as Apache Spark, can be implemented for batch processing of extensive datasets, boosting processing efficiency. Additionally, using cloud solutions like AWS Lambda or Azure Functions enables on-demand serverless architecture, optimizing resource use and reducing costs.
-
-To accommodate more users and analyze a larger volume of ECG data, here are suggested scalability strategies:
-
-- **Batch Processing**: For high data volumes (e.g., 10,000 ECGs), implement batch processing using a distributed computing framework like Apache Spark or Dask 
-(I really love Dask because it works so well with Python and can be easily set up on cloud platforms like Amazon AWS, Google GCP, and Microsoft Azure!). This will allow simultaneous analysis of multiple ECGs, increasing efficiency.
-
-- **Cloud Hosting**: Deploy the app on a cloud platform, such as AWS or Google Cloud. Utilize cloud storage (like AWS S3) for file uploads to handle larger storage needs.
-- **Load Balancing**: Use a load balancer to distribute incoming requests across multiple server instances, ensuring that the app can handle a high volume of concurrent users without compromising performance.
-- **Serverless Architecture**: For individual file processing, consider using serverless functions (e.g., AWS Lambda) to scale on-demand based on file upload frequency.
+> **Note**: The `Source` folder contains all Python scripts for logical separation and better maintainability.
 
 ---
 
-## 🤖 Generative AI Tools
+## ⚙️ Usage
 
-This project leveraged AI tools for guidance and assistance:
+1. Visit `http://localhost:8000/docs` in your web browser.  
+   This will open the interactive API documentation provided by FastAPI.
+2. Use the `/upload/` endpoint to upload your `.hd5` ECG file and receive multi-task predictions.
 
-- **ChatGPT**: Used to clean and documentation of the code.
+> **Pro Tip**: Use the API documentation to test the upload functionality and verify responses before integrating with other systems.
 
 ---
 
-## 🤝 Contributing
+## 🌐 Scalability
+To scale this application for greater user loads and larger data sets, consider the following approaches:
 
-Contributions are welcome! If you'd like to enhance the application or propose additional features, please follow these steps:
+- **Batch Processing**: Integrate a task queue system like **Celery** with **Redis** for processing multiple file uploads asynchronously.
+- **Load Balancing**: Deploy on cloud platforms (e.g., **AWS**, **GCP**) with load balancing and auto-scaling to handle traffic spikes.
+- **Distributed Processing**: Utilize **Apache Spark** for parallel data processing, enabling efficient handling of massive data sets.
 
-1. Fork the repository.
-2. Create a new branch with your feature or improvement (`git checkout -b feature-name`).
-3. Commit your changes (`git commit -m 'Add new feature'`).
-4. Push to the branch (`git push origin feature-name`).
-5. Open a pull request describing your changes.
+> **Scalability Insight**: Combining these strategies ensures seamless scaling, optimal performance, and resilience under high data loads.
 
+---
+
+## 💡 Assumptions
+- The pre-trained model file is correctly placed in the specified path.
+- All uploaded files conform to the `.hd5` format for seamless processing.
+
+> **Clarification**: This application is designed for standard `.hd5` files used in clinical ECG data storage. Ensure data is properly pre-processed if adapting for different input types.
+
+---
+
+## 🛡️ Error Handling
+We’ve designed the application with user experience in mind:
+- **Invalid File Format**: If a non-`.hd5` file is uploaded, a helpful error message is shown.
+- **Processing Errors**: Any unexpected issues during file reading or data conversion trigger detailed HTTP responses with specific guidance.
+
+> **Error Handling Strategy**: Clear error messages help users quickly identify issues and take corrective actions, ensuring smooth operation.
 
 ---
 
 ## 📜 License
-The project is distributed under the MIT License, chosen for its permissiveness and encouragement of collaborative development. This aligns with the vision of fostering innovation and open-source contributions while protecting the authors' work.
+This project is distributed under the [MIT License](LICENSE), allowing you to use, modify, and distribute the application freely.
 
-© Mojtaba Fazli. For any questions or assistance, feel free to reach out via email at mfazli@stanford.edu or mfazli@meei.harvard.edu.
- 😊
+> **Open Source Commitment**: Contribute, adapt, or extend this project under the flexibility of the MIT license.
+
+---
+
+🔗 **Want to contribute or learn more? Visit [our GitHub page](https://github.com/broadinstitute/ml4h).**
+
+🌟 Thank you for exploring the ECG2AF Web Application. Your feedback and contributions are welcome!
+
+---
+
+💡 *Crafted with precision and care by clinical AI experts.*
+
