@@ -141,11 +141,15 @@ This project is distributed under the [MIT License](LICENSE), allowing you to us
 
 ---
 
-🔗 **Want to contribute or learn more? Visit [our GitHub page](https://github.com/broadinstitute/ml4h).**
+🔗 **Want to contribute or learn more? Visit [GitHub page](https://github.com/broadinstitute/ml4h).**
 
 🌟 Thank you for exploring the ECG2AF Web Application. Your feedback and contributions are welcome!
 
 ---
 
-💡 *Crafted with precision and care by clinical AI experts.*
+
+💡 For any questions or suggestions, please feel free to contact me either at  mfazli@meei.harvard.edu or mfazli@stanford.edu
+
+💡 © Mojtaba Fazli 2024. 
+
 
