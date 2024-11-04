@@ -50,6 +50,9 @@ else
     echo "Model already exists. Skipping model pull."
 fi
 
+# Navigate back to the main directory before building the Docker container
+cd ..
+
 # Step 6: Build the Docker container
 echo "Building the Docker container..."
 docker build -t ecg2af-web-app .
