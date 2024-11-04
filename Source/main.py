@@ -1,8 +1,9 @@
 # Import necessary libraries from FastAPI and utility modules
 from fastapi import FastAPI, File, UploadFile, HTTPException
 import numpy as np
-from model import load_model, predict_ecg
-from utils import ecg_as_tensor
+from model import load_model
+from utils import ecg_as_tensor, predict_ecg
+import tensorflow_addons as tfa  # Ensure custom layers are imported
 
 # Initialize FastAPI application
 app = FastAPI()
