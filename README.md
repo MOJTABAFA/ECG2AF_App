@@ -126,11 +126,15 @@ COPY Source /ECG2AF_WebApp/Source
 # Copy the Templates directory into the container
 COPY Templates /ECG2AF_WebApp/Templates
 
+# Copy the ml4h directory into the container to include the model
+COPY ml4h /ECG2AF_WebApp/ml4h
+
 # Set the working directory to the Source directory
 WORKDIR /ECG2AF_WebApp/Source
 
 # Command to run the FastAPI application
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
 ```
 > **Note**: The `Source` folder contains all Python scripts for logical separation and better maintainability.
 
