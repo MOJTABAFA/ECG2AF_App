@@ -1,7 +1,8 @@
 import tensorflow as tf
+import tensorflow_addons as tfa  # Ensure custom layers and optimizers are available
 
-# Path to the pre-trained model
-MODEL_PATH = 'model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5'
+# Updated path to the pre-trained model
+MODEL_PATH = '/ECG2AF_WebApp/ml4h/model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5'
 
 def load_model():
     """
@@ -9,7 +10,12 @@ def load_model():
     Returns:
         tf.keras.Model: The loaded TensorFlow model.
     """
-    model = tf.keras.models.load_model(MODEL_PATH)
+    # Register custom layers and optimizers
+    custom_objects = {
+        'Addons>PoincareNormalize': tfa.layers.PoincareNormalize,
+        'RectifiedAdam': tfa.optimizers.RectifiedAdam
+    }
+    model = tf.keras.models.load_model(MODEL_PATH, custom_objects=custom_objects)
     return model
 
 def predict_ecg(model, tensor):
