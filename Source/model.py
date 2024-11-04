@@ -10,10 +10,11 @@ def load_model():
     Returns:
         tf.keras.Model: The loaded TensorFlow model.
     """
-    # Register custom layers and optimizers
+    # Register custom layers, optimizers, and loss functions
     custom_objects = {
         'Addons>PoincareNormalize': tfa.layers.PoincareNormalize,
-        'RectifiedAdam': tfa.optimizers.RectifiedAdam
+        'RectifiedAdam': tfa.optimizers.RectifiedAdam,
+        'loss': tf.keras.losses.MeanSquaredError  # Replace with the actual custom loss function if needed
     }
     model = tf.keras.models.load_model(MODEL_PATH, custom_objects=custom_objects)
     return model
