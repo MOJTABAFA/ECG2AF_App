@@ -34,7 +34,7 @@ Welcome to the **ECG2AF Web Application**! This project is designed to help pred
 ### Installation Steps
 1. **Clone the Repository**
    ```bash
-   git clone https://github.com/yourusername/ECG2AF_WebApp.git
+   git clone https://github.com/MOJTABAFA/ECG2AF_WebApp.git
    cd ECG2AF_WebApp
    ```
 2. **Pull the Docker Image**
