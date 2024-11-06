@@ -77,6 +77,133 @@ You can automate the setup and run process with the provided `run_project.sh` sc
 bash run_project.sh
 ```
 
+# 🌟 ECG2AF Web Application
+
+Welcome to the ECG2AF Web Application! This application allows users to predict the risk of atrial fibrillation (AF) using ECG data uploaded in HD5 format. The application is built with FastAPI and uses a pre-trained model to process uploaded ECG files and return multi-task predictions.
+
+---
+
+## 📋 Table of Contents
+- [🖥️ Overview](#overview)
+- [🚀 Features](#features)
+- [🔧 Setup Instructions](#setup-instructions)
+- [📂 Project Structure](#project-structure)
+- [📂 Detailed File Descriptions](#Detailed-File-Descriptions)
+- [🐳 Dockerfile](#Dockerfile)
+- [⚙️ Usage](#usage)
+- [🌐 Scalability](#scalability)
+- [💡 Assumptions](#assumptions)
+- [🛡️ Error Handling](#error-handling)
+- [📜 License](#license)
+
+---
+
+## 🖥️ Overview
+This web application leverages FastAPI to process ECG files stored in `.hd5` format and runs predictions using a pre-trained **ECG2AF** model. Designed for simplicity, it offers a smooth user experience and can be deployed locally with minimal effort.
+
+> **Why ECG2AF?**  
+> Atrial fibrillation (AF) is a major risk factor for stroke and heart failure. Predicting AF using data-driven methods can greatly assist clinicians in early diagnosis and treatment planning.
+
+---
+
+## 🚀 Features
+
+✨ **File Upload Interface**  
+A simple, user-friendly upload portal that allows users to submit their ECG files for analysis.
+
+⚡ **Real-Time Processing**  
+Get results instantly, thanks to the efficient processing of ECG data and multi-task prediction outputs.
+
+🛡️ **Robust Error Handling**  
+Receive clear, actionable feedback for any issues encountered (e.g., incorrect file formats).
+
+😊 **User Friendly** 
+Provides API documentation and a web interface for easy testing. Includes both pre-trained and test models for verification and testing.
+
+> **Unique Approach**: This tool is tailored for quick integration with clinical workflows and can be adapted for other prediction models.
+
+---
+
+## 🛠️ Setup and Installation
+
+Follow these steps to get the application running on your local environment:
+
+Prerequisites
+```   
+      * Python 3.6 or higher
+
+      * Docker
+
+      * Git LFS (for large file storage to download the model)
+```
+
+### 1. Clone the Repository
+Clone the project from GitHub and navigate into the project folder:
+```bash
+git clone https://github.com/MOJTABAFA/ECG2AF_WebApp.git
+cd ECG2AF_WebApp
+```
+
+### 2. Pull the Docker Image
+To ensure all necessary libraries are available, pull the pre-configured Docker image:
+```bash
+docker pull ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu
+```
+
+### 3. Install Git LFS and Download the Model
+Git LFS (Large File Storage) is needed to pull the model file:
+```bash
+git lfs install
+git lfs pull --include model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5
+```
+
+### 4. Install Dependencies
+Ensure Python 3.6 or higher is installed. Run the following command to install the required packages:
+```bash
+pip install -r requirements.txt
+```
+
+### 5. Run the Application
+Start the application locally using Uvicorn:
+```bash
+uvicorn main:app --reload
+```
+---
+
+### 6. Automated Run with Bash Script
+Use the provided setup.sh script to automate setup, including Docker build and deployment
+
+```bash
+bash setup.sh
+```
+
+> **Tip**: Ensure your Python environment is activated before running the commands.
+
+---
+
+## 📂 Project Structure
+Here's a brief overview of the project structure to help you navigate the files:
+```plaintext
+📁 ECG2AF_WebApp
+├── Source
+│   ├── main.py         # Core FastAPI application
+│   ├── model.py        # Model loading and prediction functions
+│   └── utils.py        # Utility functions for ECG data processing
+├── Models              # Folder containing pre-trained and test models
+│   ├── ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5
+│   └── fake_0.hd5      # Test model file for initial testing
+├── Templates
+│   ├── upload.html     # File upload interface
+│   └── results.html    # Displays prediction results
+├── Dockerfile          # Docker configuration for deployment
+├── README.md           # Project documentation
+├── requirements.txt    # List of required packages
+└── setup.sh            # Bash script for automated setup and deployment
+
+```
+
+> **Note**: The `Source` folder contains all Python scripts, organized for logical separation and improved maintainability. Additionally, models are saved in the `Models` folder to ensure accessibility in case of any issues retrieving them from the `Broad Institute's` GitHub repository.
+
 ## 📂 Detailed File Descriptions
 
 ### 1. `Source/main.py`
@@ -97,19 +224,22 @@ Displays the prediction results in a structured format.
 ## 📦 Requirements
 List of dependencies included in `requirements.txt`:
 ```plaintext
-fastapi
-uvicorn
-h5py
-numpy
-tensorflow
-jinja2
+fastapi== 0.78.0
+uvicorn== 0.17.6
+h5py== 3.7.0
+numpy== 1.21.6
+tensorflow== 2.9.0
+tensorflow-addons== 0.17.1
+jinja2== 3.1.2
+python-multipart== 0.0.5
+
 ```
 
 ## 🐳 Dockerfile
 The `Dockerfile` sets up the environment for running the application in a containerized format.
 ```dockerfile
-# Use an official Python runtime as a parent image
-FROM python:3.8
+# Use the official ml4h container from Broad Institute as the base image
+FROM ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu
 
 # Set the working directory in the container
 WORKDIR /ECG2AF_WebApp
@@ -126,7 +256,7 @@ COPY Source /ECG2AF_WebApp/Source
 # Copy the Templates directory into the container
 COPY Templates /ECG2AF_WebApp/Templates
 
-# Copy the ml4h directory into the container to include the model
+# Copy the ml4h directory into the container, including the model file
 COPY ml4h /ECG2AF_WebApp/ml4h
 
 # Set the working directory to the Source directory
@@ -136,14 +266,26 @@ WORKDIR /ECG2AF_WebApp/Source
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 
 ```
-> **Note**: The `Source` folder contains all Python scripts for logical separation and better maintainability.
+> **Note**: Place the model in the specified path for accurate predictions.
+
+
+
+---
+## ⚙️ Run with Docker
+
+1. Build the Docker Image  
+   `docker build -t ecg2af-web-app . `
+
+2. Run the Docker Container
+   `docker run -d -p 8000:8000 --name ecg2af-web-app-container ecg2af-web-app`
 
 ---
 
 ## ⚙️ Usage
 
-1. Visit `http://localhost:8000/docs` in your web browser.  
+1. Access the API documentation at `http://localhost:8000/docs` in your browser for interactive testing.  
    This will open the interactive API documentation provided by FastAPI.
+
 2. Use the `/upload/` endpoint to upload your `.hd5` ECG file and receive multi-task predictions.
 
 > **Pro Tip**: Use the API documentation to test the upload functionality and verify responses before integrating with other systems.
@@ -174,6 +316,14 @@ Scaling the ECG2AF application for higher user loads and larger datasets can be 
 > **Clarification**: This application is designed for standard `.hd5` files used in clinical ECG data storage. Ensure data is properly pre-processed if adapting for different input types.
 
 ---
+## ✨ Model Output Details ( Not entirely accurate—these are just my estimates based on the predicted results and the surrounding context.)
+
+   Prediction 1: Confidence scores for different intervals.
+   Prediction 2: Binary classification probabilities.
+   Prediction 3: Scalar risk metric.
+   Prediction 4: Binary classification output.
+
+---
 
 ## 🛡️ Error Handling
 We’ve designed the application with user experience in mind:
@@ -188,7 +338,7 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 📧 Contact
 
-💡 For any questions or suggestions, please feel free to contact me either at mfazli@meei.harvard.edu or mfazli@stanford.edu
+💡 For any questions or suggestions, please feel free to contact me at mfazli@stanford.edu
 
 💡 © Mojtaba Fazli Nov, 2024.
 
