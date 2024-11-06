@@ -11,6 +11,13 @@ app = FastAPI()
 # Load the pre-trained ECG2AF model
 model = load_model()  # Load the model from the model.py script
 
+@app.get("/")
+async def root():
+    """
+    Root endpoint to display a welcome message.
+    """
+    return {"message": "Welcome to the ECG2AF Web App. Use /upload/ to upload an ECG file for prediction."}
+
 @app.post("/upload/")
 async def upload_ecg(file: UploadFile = File(...)):
     """
@@ -23,9 +30,13 @@ async def upload_ecg(file: UploadFile = File(...)):
     # Validate file format
     if not file.filename.endswith('.hd5'):
         raise HTTPException(status_code=400, detail="Invalid file format. Please upload an .hd5 file.")
+    
     try:
-        # Convert the uploaded file to a tensor
-        tensor = ecg_as_tensor(file.file)
+        # Read the file contents into memory as bytes
+        file_content = await file.read()  # Reads the file as bytes
+
+        # Convert the file contents to a tensor using a utility function
+        tensor = ecg_as_tensor(file_content)  # Make sure ecg_as_tensor can handle bytes input
         tensor = np.expand_dims(tensor, axis=0)  # Add batch dimension for model input
 
         # Get predictions from the model
@@ -35,7 +46,7 @@ async def upload_ecg(file: UploadFile = File(...)):
         # Handle any exceptions during processing
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
-# Run the FastAPI application
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# Run the FastAPI application (commented out if running in Docker)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="0.0.0.0", port=8000)

@@ -1,5 +1,5 @@
-# Use an official Python runtime as a parent image
-FROM python:3.8
+# Use the official ml4h container from Broad Institute as the base image
+FROM ghcr.io/broadinstitute/ml4h:tf2.9-latest-cpu
 
 # Set the working directory in the container
 WORKDIR /ECG2AF_WebApp
@@ -16,7 +16,7 @@ COPY Source /ECG2AF_WebApp/Source
 # Copy the Templates directory into the container
 COPY Templates /ECG2AF_WebApp/Templates
 
-# Copy the ml4h directory into the container to include the model
+# Copy the ml4h directory into the container, including the model file
 COPY ml4h /ECG2AF_WebApp/ml4h
 
 # Set the working directory to the Source directory
