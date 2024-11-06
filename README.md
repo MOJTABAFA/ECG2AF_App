@@ -52,9 +52,7 @@ Follow these steps to get the application running on your local environment:
 Prerequisites
 ```   
       * Python 3.6 or higher
-
       * Docker
-
       * Git LFS (for large file storage to download the model)
 ```
 
