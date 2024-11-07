@@ -48,6 +48,7 @@ echo "Installing Git LFS and pulling the model..."
 git lfs install
 if [ ! -f "model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5" ]; then
     git lfs pull --include model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5
+    git lfs pull --include model_zoo/ECG2AF/strip_*
 else
     echo "Model already exists. Skipping model pull."
 fi
