@@ -76,6 +76,7 @@ Git LFS (Large File Storage) is needed to pull the model file:
 ```bash
 git lfs install
 git lfs pull --include model_zoo/ECG2AF/ecg_5000_survival_curve_af_quadruple_task_mgh_v2021_05_21.h5
+git lfs pull --include model_zoo/ECG2AF/strip_*
 ```
 
 ### 4. Install Dependencies
