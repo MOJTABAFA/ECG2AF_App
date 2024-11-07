@@ -5,19 +5,17 @@ Welcome to the ECG2AF Web Application! This application allows users to predict 
 ---
 
 ## 📋 Table of Contents
-- [🖥️ Overview](#️-overview)
-- [🚀 Features](#-features)
-- [🔧 Setup Instructions](#-setup-and-installation)
-- [📂 Project Structure](#-project-structure)
-- [📄 Detailed File Descriptions](#-detailed-file-descriptions)
-- [📦 Requirements](#-requirements)
-- [🐳 Dockerfile](#-dockerfile)
-- [⚙️ Usage](#-usage)
-- [🌐 Scalability](#-scalability)
-- [💡 Assumptions](#-assumptions)
-- [✨ Model Output Details](#-model-output-details)
-- [🛡️ Error Handling](#️-error-handling)
-- [📜 License](#-license)
+- [🖥️ Overview](#overview)
+- [🚀 Features](#features)
+- [🔧 Setup Instructions](#setup-instructions)
+- [📂 Project Structure](#project-structure)
+- [📂 Detailed File Descriptions](#Detailed-File-Descriptions)
+- [🐳 Dockerfile](#Dockerfile)
+- [⚙️ Usage](#usage)
+- [🌐 Scalability](#scalability)
+- [💡 Assumptions](#assumptions)
+- [🛡️ Error Handling](#error-handling)
+- [📜 License](#license)
 
 ---
 
@@ -120,6 +118,7 @@ Here's a brief overview of the project structure to help you navigate the files:
 ├── Dockerfile          # Docker configuration for deployment
 ├── README.md           # Project documentation
 ├── requirements.txt    # List of required packages
+├── ECG2AF_API_Guide.pdf# Instructions for Setting Up and Using the ECG2AF Web Application API
 └── setup.sh            # Bash script for automated setup and deployment
 
 ```

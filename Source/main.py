@@ -1,3 +1,15 @@
+"""
+Developed by Mojtaba Fazli.
+
+This code is provided for researchers and developers interested in leveraging it for their own projects. 
+Please make sure to reference this code if you use it in your work or publications.
+
+Description:
+This FastAPI application is designed for uploading, processing, and predicting ECG data using a pre-trained model.
+
+Published Date: Nov. 2, 2024
+"""
+
 # Import necessary libraries from FastAPI and utility modules
 from fastapi import FastAPI, File, UploadFile, HTTPException
 import numpy as np
