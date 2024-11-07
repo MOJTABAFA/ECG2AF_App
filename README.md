@@ -239,11 +239,12 @@ Scaling the ECG2AF application for higher user loads and larger datasets can be 
 ---
 ## ✨ Model Output Details ( Not entirely accurate—these are just my estimates based on the predicted results and the surrounding context.)
 
+```Plaintext
    Prediction 1: Confidence scores for different intervals.
    Prediction 2: Binary classification probabilities.
    Prediction 3: Scalar risk metric.
    Prediction 4: Binary classification output.
-
+```
 ---
 
 ## 🛡️ Error Handling
