@@ -217,10 +217,16 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 To scale the ECG2AF application for higher user loads and larger datasets, an integrated strategy utilizing container orchestration, distributed data processing, serverless functions, and robust cloud services is crucial. Here’s an enhanced, multi-layered approach with expanded details on tools, techniques, and alternatives across leading cloud providers:
 
 1. Container Orchestration for Microservices
-```Plaitext
-	•	Kubernetes: Use Kubernetes to orchestrate containerized services, facilitating easy scaling and load balancing of application components. This improves reliability and scalability while reducing resource waste by efficiently managing and distributing workloads.
-	•	Docker: Containerize application components using Docker, which ensures a consistent environment across development and production, simplifies deployment, and enables rapid scaling of services.
-```
+Here’s a refined and organized version in Markdown:
+
+---
+
+- **Kubernetes:**  
+  Use Kubernetes to orchestrate containerized services, facilitating easy scaling and load balancing of application components. This improves reliability and scalability while reducing resource waste by efficiently managing and distributing workloads.
+
+- **Docker:**  
+  Containerize application components using Docker to ensure a consistent environment across development and production. This approach simplifies deployment and enables rapid scaling of services.
+  
 2. Distributed Data Processing for Large Datasets
 ```
 	•	Apache Spark and Dask: Both Apache Spark and Dask provide powerful distributed data frameworks that can handle large-scale data processing. Spark is known for its robust capabilities in distributed batch processing, while Dask is seamlessly compatible with Python, making it suitable for cloud deployments across AWS, Google Cloud Platform (GCP), and Microsoft Azure.
