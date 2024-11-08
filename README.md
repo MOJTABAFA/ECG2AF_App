@@ -216,11 +216,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ## 🌐 Scalability
 To scale the ECG2AF application for higher user loads and larger datasets, an integrated strategy utilizing container orchestration, distributed data processing, serverless functions, and robust cloud services is crucial. Here’s an enhanced, multi-layered approach with expanded details on tools, techniques, and alternatives across leading cloud providers:
 
-
-*1. Container Orchestration for Microservices*
-Here’s a refined and organized version in Markdown:
-
 ---
+*1. Container Orchestration for Microservices*
 
 - **Kubernetes:**  
   Use Kubernetes to orchestrate containerized services, facilitating easy scaling and load balancing of application components. This improves reliability and scalability while reducing resource waste by efficiently managing and distributing workloads.
@@ -228,10 +225,8 @@ Here’s a refined and organized version in Markdown:
 - **Docker:**  
   Containerize application components using Docker to ensure a consistent environment across development and production. This approach simplifies deployment and enables rapid scaling of services.
   
-2. Distributed Data Processing for Large Datasets
-Here's a clear, bulletized version in Markdown:
-
 ----
+*2. Distributed Data Processing for Large Datasets*
 
 - **Apache Spark and Dask:**  
   Apache Spark and Dask are powerful distributed data frameworks capable of handling large-scale data processing.  
@@ -242,11 +237,8 @@ Here's a clear, bulletized version in Markdown:
   Both Google Cloud’s Dataflow and Microsoft Azure Synapse Analytics provide fully managed solutions for large-scale data processing.  
   - **Google Cloud Dataflow:** Offers batch and stream processing with integration into Apache Beam, supporting portability across various environments.
   - **Azure Synapse Analytics:** Supports massive dataset analysis with Spark, allowing efficient processing of large datasets.
-
-    
-3. Batch Processing and Asynchronous Task Management
-
----
+--- 
+*3. Batch Processing and Asynchronous Task Management*
 
 - **Batch Processing Frameworks:**  
   In addition to Spark and Dask, consider **MapReduce** (supported on AWS EMR, Google Dataproc, and Azure HDInsight) for high-throughput, fault-tolerant batch processing.
@@ -254,10 +246,9 @@ Here's a clear, bulletized version in Markdown:
     Use **Celery** in combination with **Redis** or **RabbitMQ** to manage asynchronous tasks efficiently. This setup is ideal for handling tasks like multiple file uploads and enables the application to handle high traffic volumes without compromising processing speed or reliability.
   - **Data Pipeline Services:**  
     Managed services such as **AWS Data Pipeline**, **Google Cloud Dataflow**, and **Azure Data Factory** facilitate setting up, scheduling, and scaling batch processing workflows, making them especially useful for handling large datasets.
-    
-4. Load Balancing and Auto-Scaling
 
----
+---    
+*4. Load Balancing and Auto-Scaling*
 
 - **Cloud Load Balancers:**  
   Implement cloud-native load balancers to distribute incoming requests across multiple instances:
@@ -272,9 +263,9 @@ Here's a clear, bulletized version in Markdown:
   Use auto-scaling to dynamically allocate resources:
   - **AWS Auto Scaling, GCP Autoscaler, and Azure VM Scale Sets:**  
     Each provides automatic scaling capabilities, monitoring traffic to adjust the number of instances to match demand, helping handle unexpected traffic spikes.
-    
-5. Serverless Architectures for On-Demand Processing
+
 ---
+*5. Serverless Architectures for On-Demand Processing*
 
 - **Serverless Functions:**  
   Use serverless functions, such as **AWS Lambda**, **Google Cloud Functions**, and **Azure Functions**, for processing individual files. These functions offer scalable, cost-effective solutions that adapt to fluctuating workloads without requiring dedicated servers. They can be triggered by events like file uploads, ensuring that resources are used only when needed, optimizing cost and flexibility.
@@ -283,9 +274,9 @@ Here's a clear, bulletized version in Markdown:
   Leverage serverless solutions for batch processing with **AWS Batch** and **Google Cloud Run Jobs**:
   - **AWS Batch:** Dynamically provisions resources for batch jobs, eliminating the need for manual infrastructure management.
   - **Google Cloud Run Jobs:** Allows you to execute batch workloads on demand, providing a fully managed environment that scales with your needs.
-
-6. Cloud Hosting and Scalable Storage Solutions
+    
 ---
+*6. Cloud Hosting and Scalable Storage Solutions*
 
 - **Multi-Cloud Hosting:**  
   Host the application on a scalable cloud platform, choosing among **AWS**, **Google Cloud Platform**, or **Microsoft Azure** for a robust infrastructure that includes auto-scaling, managed storage, and load balancing.
@@ -297,8 +288,7 @@ Here's a clear, bulletized version in Markdown:
     For metadata and user-related data, NoSQL databases like **AWS DynamoDB**, **Google Bigtable**, and **Azure CosmosDB** offer fast, scalable, and serverless database solutions tailored to handle large, high-throughput workloads.
 
 ---
-Summary of Key Tools and Techniques:
-
+**Summary of Key Tools and Techniques:**
 ---
 
 - **Batch Processing:**  
