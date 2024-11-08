@@ -217,6 +217,7 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 To scale the ECG2AF application for higher user loads and larger datasets, an integrated strategy utilizing container orchestration, distributed data processing, serverless functions, and robust cloud services is crucial. Here’s an enhanced, multi-layered approach with expanded details on tools, techniques, and alternatives across leading cloud providers:
 
 ---
+
 *1. Container Orchestration for Microservices*
 
 - **Kubernetes:**  
@@ -225,7 +226,7 @@ To scale the ECG2AF application for higher user loads and larger datasets, an in
 - **Docker:**  
   Containerize application components using Docker to ensure a consistent environment across development and production. This approach simplifies deployment and enables rapid scaling of services.
   
-----
+---
 *2. Distributed Data Processing for Large Datasets*
 
 - **Apache Spark and Dask:**  
@@ -287,8 +288,8 @@ To scale the ECG2AF application for higher user loads and larger datasets, an in
   - **Cloud Databases (DynamoDB, Bigtable, CosmosDB):**  
     For metadata and user-related data, NoSQL databases like **AWS DynamoDB**, **Google Bigtable**, and **Azure CosmosDB** offer fast, scalable, and serverless database solutions tailored to handle large, high-throughput workloads.
 
----
-**Summary of Key Tools and Techniques:**
+
+*Summary of Key Tools and Techniques:*
 ---
 
 - **Batch Processing:**  
