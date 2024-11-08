@@ -216,7 +216,8 @@ CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 ## 🌐 Scalability
 To scale the ECG2AF application for higher user loads and larger datasets, an integrated strategy utilizing container orchestration, distributed data processing, serverless functions, and robust cloud services is crucial. Here’s an enhanced, multi-layered approach with expanded details on tools, techniques, and alternatives across leading cloud providers:
 
-1. Container Orchestration for Microservices
+
+*1. Container Orchestration for Microservices*
 Here’s a refined and organized version in Markdown:
 
 ---
